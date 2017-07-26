@@ -1,0 +1,604 @@
+﻿Version=6.8
+NumberOfModules=5
+Module1=Starter
+Module2=KeyValueStore
+Module3=ClsCheckList
+Module4=ClsExplorer
+Module5=SetAnimation
+Build1=Default,com.bcleaner
+ManifestCode=AddManifestText(~\n~<uses-sdk android:minSdkVersion="4" android:targetSdkVersion="23"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>~\n~android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>~\n~<uses-permission ~\n~android:name="android.launcher.permission.INSTALL_SHORTCUT"/>~\n~<uses-permission ~\n~ android:name="android.permission.CLEAR_APP_CACHE"/>~\n~<uses-permission ~\n~ android:name="android.permission.GET_PACKAGE_SIZE"/>~\n~<uses-permission ~\n~ android:name="android.permission.GET_TASKS"/>~\n~<uses-permission~\n~  android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>~\n~<uses-permission~\n~  android:name="android.permission.READ_EXTERNAL_STORAGE"/>~\n~<uses-permission~\n~  android:name="android.permission.WRITE_SECURE_SETTINGS"/>~\n~<uses-permission~\n~ android:name="android.permission.PACKAGE_USAGE_STATS"/>~\n~<uses-permission~\n~  android:name="android.permission.BATTERY_STATS"/>~\n~<uses-permission~\n~  android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>~\n~<uses-permission~\n~  android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>~\n~<uses-permission~\n~  android:name="android.permission.SET_ALWAYS_FINISH"/>~\n~<uses-permssion~\n~  android:name="android.permission.UPDATE_DEVICE_STATS"/>~\n~<uses-permission~\n~  android:name="android.permission.BIND_APPWIDGET"/>~\n~ )~\n~ AddManifestText(<uses-feature android:name="android.hardware.telephony" android:required="false" />)~\n~AddManifestText(<uses-feature android:name="android.hardware.camera" android:required="false" />)~\n~AddManifestText(<uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />)~\n~AddManifestText(<uses-feature android:name="android.hardware.camera.flash" android:required="false" />)~\n~'AddPermission("android.permission.ACCESS_COARSE_LOCATION")~\n~AddPermission("android.permission.INTERNET")~\n~AddPermission("android.permission.ACCESS_FINE_LOCATION")~\n~'AddPermission("android.permission.ACCESS_COARSE_UPDATES")~\n~AddPermission("android.permission.READ_PHONE_STATE")~\n~AddPermission("android.permission.VIBRATE")~\n~AddPermission("android.permission.CAMERA")~\n~AddPermission("android.permission.FLASHLIGHT")~\n~AddPermission("android.permission.READ_CONTACTS")~\n~AddPermission("android.hardware.camera")~\n~AddPermission("android.permission.ACCESS_NETWORK_STATE")~\n~AddPermission("android.permission.WRITE_EXTERNAL_STORAGE")~\n~AddPermission("android.permission.ACCESS_WIFI_STATE")~\n~AddPermission("com.google.android.providers.gsf.permission.READ_GSERVICES")~\n~AddPermission("android.permission.BLUETOOTH")~\n~AddPermission("android.permission.GET_ACCOUNTS")~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~SetApplicationAttribute(android:theme, "@style/Theme.AppCompat")~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~AddApplicationText(<service android:name="com.frozendevs.cache.cleaner.model.CleanerService"/>)~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="Theme.AppCompat">~\n~        <item name="colorPrimary">#0E88F4</item>~\n~        <item name="colorPrimaryDark">#0E88F4</item>~\n~        <item name="colorAccent">#0EF44A</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~    </style>~\n~</resources>~\n~)~\n~'End of default text.~\n~
+IconFile=
+NumberOfFiles=19
+File1=1.bal
+File2=4-Clean-Master-Antivirus.jpg
+File3=add-3.png
+File4=black_shade.jpg
+File5=boost.png
+File6=clean_1.jpg
+File7=close.png
+File8=database.png
+File9=icon_Mobile-Optimizer-and-Cleaner-Android.jpg
+File10=id-card.png
+File11=menu-1.png
+File12=search_clean.png
+File13=shutdown.png
+File14=success.png
+File15=switch-5.png
+File16=total-booster.png
+File17=unnamed.png
+File18=warning.png
+File19=warning_38x38.png
+NumberOfLibraries=32
+Library1=core
+Library2=animation
+Library3=animationplus
+Library4=appcompat
+Library5=cachecleaner
+Library6=dialogs
+Library7=intent id
+Library8=licensing
+Library9=numberprogressbar
+Library10=progresswheel
+Library11=reflection
+Library12=scrollview2d
+Library13=materialdialogs
+Library14=sql
+Library15=phone
+Library16=materialcolors
+Library17=circlebutton
+Library18=xmlsax
+Library19=viewanimations
+Library20=loadingviews
+Library21=linelayout
+Library22=randomaccessfile
+Library23=xmllayoutbuilder
+Library24=javaobject
+Library25=materialdialogsv7
+Library26=opengl2
+Library27=progressrndbtn
+Library28=customnotification
+Library29=customtoast
+Library30=oslibrary
+Library31=storage
+Library32=mlfiles
+@EndOfDesignText@
+'Project created by D.Trojan
+'published by SuloMedia™ ©2017
+#Region  Project Attributes 
+	#ApplicationLabel: Bcleaner
+	#VersionCode: 9
+	#VersionName: 1.3.4
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+#AdditionalRes:C:\Users\trow\Documents\Apps\Worground\Bcleaner\res
+#Extends:android.support.v7.app.AppCompatActivity
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+	Private pak As PackageManager
+	Dim cc As CacheCleaner
+	Dim t1 As Timer
+	Private os As OperatingSystem
+End Sub
+
+Sub Globals
+	Dim args(1) As Object
+	Dim Obj1, Obj2, Obj3 As Reflector
+	Dim size,flags As Int
+	Private name,apath,l,Types(1),packName As String
+	Private icon As BitmapDrawable
+		Private ac As AppCompat
+	Private Panel1 As Panel
+	Private toolbar As ACToolBarLight
+	Dim ABHelper As ACActionBar
+	Private cb1 As Circlebutton
+	Private mcl As MaterialColors
+	Private lw3 As ListView
+	Private applist,catlist,mathlist As List 
+	Private pg As pgWheel
+	Private cinfo As CustomDialog
+	Dim counter As Int 
+	Private Label1 As Label
+	Dim date,time As String
+	Dim kvst As KeyValueStore
+	Dim kvsdata As KeyValueStore
+	Dim kvsmat As KeyValueStore
+	Private dia As 	AlertDialogBuilder 
+	Private dia2 As 	AlertDialogBuilder 
+	Private dia3 As 	AlertDialogBuilder 
+	Private shader As BitmapDrawable
+	Dim draw As JavaObject
+	Dim tmp As List
+	Private Panel2 As Panel
+	Private Label2 As Label
+	Private Label3 As Label
+	Private storage As MLfiles
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.LoadLayout("1")
+	toolbar.SetAsActionBar
+	toolbar.Elevation=10dip
+	toolbar.PopupTheme=toolbar.THEME_DARK
+	toolbar.Title=pak.GetApplicationLabel("com.bcleaner")
+	toolbar.SubTitle="Version "&pak.GetVersionName("com.bcleaner")
+	ABHelper.Initialize
+	os.Initialize("os")
+	cc.initialize("cc")
+	toolbar.InitMenuListener
+	ABHelper.HomeVisible=True
+	applist.Initialize
+	mathlist.Initialize
+	tmp.Initialize
+	catlist.Initialize
+	dia.Initialize("dia")
+	dia2.Initialize("dia2")
+	dia3.Initialize("dia3")
+	lw3.Initialize("lw3")
+	lw3.Enabled=True
+	t1.Initialize("t1",1000)
+	t1.Enabled=False
+	counter=0
+	Activity.TitleColor=mcl.md_black_1000
+	Activity.Color=Colors.ARGB(255,255,255,255)'mcl.md_blue_A200
+	Dim bd,bd1,bd2 As BitmapDrawable
+	bd1.Initialize(LoadBitmap(File.DirAssets,"menu-1.png"))
+	Activity.AddMenuItem3("Info", "inf", bd1.Bitmap,True)
+	'Activity.AddMenuItem("Settings","sett")
+	Activity.AddMenuItem("About","about")
+	bd2.Initialize(LoadBitmap(File.DirAssets,"close.png"))
+	Activity.AddMenuItem3("Exit", "close",bd2.Bitmap,True)
+	cb1.ButtonColor=Colors.ARGB(255,14,136,244)
+	cb1.ImageBitmap=LoadBitmap(File.DirAssets,"boost.png")
+	kvst.Initialize(File.DirDefaultExternal,"data_time")
+	kvsdata.Initialize(File.DirDefaultExternal,"data_data")
+	kvsmat.Initialize(File.DirDefaultExternal,"data_math")
+	draw.InitializeNewInstance("android.graphics.Shader",Null)
+	pg.Visible=False
+	pg.RimShader=draw
+	pg.BarColor=Colors.ARGB(220,14,136,244)
+	pg.BarLength=10dip
+	pg.BarWidth=10dip
+	pg.RimWidth=10dip
+	pg.FadingEdgeLength=15dip
+	pg.SpinSpeed=45
+	pg.TextSize=30
+	pg.TextColor=mcl.md_blue_A700
+	Dim l1,l2,l3,l4,l5,l6 As Label
+	l1.Initialize("l1")
+	l2.Initialize("l2")
+	l3.Initialize("l3")
+	l4.Initialize("l4")
+	l5.Initialize("l5")
+	l6.Initialize("l6")
+	l6=lw3.SingleLineLayout.Label
+	l1.TextColor=mcl.md_light_blue_A700'Colors.ARGB(200,255,255,255)
+	l6.TextColor=mcl.md_red_A200'Colors.ARGB(200,255,255,255)
+	l1.TextSize=15
+	l6.TextSize=15
+	l1.Gravity=Gravity.CENTER
+	l4=lw3.TwoLinesAndBitmap.Label
+	l2.TextColor=Colors.White
+	l4.TextColor=Colors.White
+	l2.TextSize=15	
+	l4.TextSize=15
+	l3.TextColor=mcl.md_amber_A700	
+	l5=lw3.TwoLinesAndBitmap.SecondLabel
+	l3.TextSize=15
+	l5.TextSize=15
+	l5.TextColor=mcl.md_blue_500
+	Label1.TextColor=Colors.ARGB(255,14,136,244)'Colors.ARGB(255,255,255,255)
+	Label1.BringToFront
+	Label1.Gravity=Gravity.CENTER_HORIZONTAL
+	DateTime.DateFormat="dd.MM"
+	time=DateTime.Time(DateTime.Now)
+	date= DateTime.Date(DateTime.Now)
+	Label2.TextColor=Colors.ARGB(190,14,136,244)
+	Label3.TextColor=Colors.ARGB(190,14,136,244)
+	Label2.TextSize=15
+	Label3.TextSize=15
+	Label1.BringToFront
+	Label1.TextSize=19
+	
+	If FirstTime=True Then
+		File.WriteList(File.DirDefaultExternal,"math.txt",mathlist)
+	End If
+	
+	kvs_read
+End Sub
+
+Sub Activity_Resume
+
+	kvs_read
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+		t1.Enabled=False
+	pg.Visible=False
+	cb1.ButtonColor=Colors.ARGB(255,14,136,244)
+	cb1.ImageBitmap=LoadBitmap(File.DirAssets,"boost.png")
+	SetAnimation.setanimati("extra_in", "extra_out")
+End Sub
+
+Sub Activity_KeyPress (KeyCode As Int) As Boolean 'Return True to consume the event
+	If KeyCode=KeyCodes.KEYCODE_BACK Then
+		Activity.Finish
+		SetAnimation.setanimati("extra_in", "extra_out")
+	End If
+	Return(True)
+End Sub
+
+Sub kvs_read
+	Dim si,exi,ini As Int
+	Dim sd,exd,inter,mount As String
+	sd=storage.Sdcard
+	exd=storage.SdcardReady
+	inter=os.TotalInternalMemorySize
+	ini=inter
+	mount=storage.SdcardReady
+	If exd="mounted" Then
+		Label3.Text=storage.GetDiskstats(sd)
+	Else
+		Label2.Text=storage.GetDiskstats(File.DirRootExternal)
+		Label3.text="Total Apps cleaned: "&catlist.Get(0)
+	End If
+	Dim math As Int 
+	Dim result As Float
+	Dim read,dread As String 
+	For Each logcat As String In kvst.ListKeys
+		read=kvst.GetSimple(logcat)
+
+	Next
+	Dim da1 As String
+	mathlist.Clear
+	Dim sum As Int =  0
+	For Each d As Double In kvsmat.ListKeys
+		mathlist.Add(d)
+		sum =sum +d
+	Next
+	Label1.Text="Total "&FormatFileSize(sum)&" cleaned!"
+End Sub
+
+Sub mean(data As List) As Double
+	Dim sum As Int  = 0
+	For Each x As Double In data
+		sum = sum + x
+	Next
+	Return sum
+End Sub
+
+Sub variance(data As List) As Double
+	Dim  Sum As Double = 0
+	Dim  Sum_sqr As Double = 0
+	For Each x As Double In data
+		Sum = Sum + x
+		Sum_sqr = Sum_sqr + x'*x
+	Next
+	Return (Sum_sqr - (Sum+Sum)/data.Size)/data.size
+End Sub
+
+Sub inf_click
+	Dim ic,id As BitmapDrawable
+	ic.Initialize(LoadBitmap(File.DirAssets,"add-3.png"))
+	id.Initialize(LoadBitmap(File.DirAssets,"add-3.png"))
+	Dim read As String
+	For Each logcat As String In kvst.ListKeys
+		
+	Next
+	dia.setIcon2(id).create
+	For Each lg As String In kvst.ListKeys
+		read=kvst.GetSimple(lg)
+	Next
+	dia.setCancelable(True).setNegativeButton("Clear").setNeutralButton("Ok").setTitle("Event log:").setMultiChoiceItems(Array As String(kvst.GetSimple(logcat)),Null).show
+	Return
+End Sub
+
+Sub cb1_Click
+	cb1.ImageBitmap=Null
+	cb1.ButtonColor=Colors.ARGB(255,255,255,255)
+	pg.Visible=True
+	Label1.Visible=False
+	scan_start
+End Sub
+
+Sub scan_start
+	
+	cc.ScanCache
+	ToastMessageShow("scan started",False)
+End Sub
+
+Sub close_click
+	ExitApplication
+	SetAnimation.setanimati("extra_in", "extra_out")
+End Sub
+
+Sub close_init
+	pg.Visible=False
+	Label1.Visible=True
+	Label1.BringToFront
+	cb1.ImageBitmap=LoadBitmap(File.DirAssets,"boost.png")
+	cb1.ButtonColor=Colors.ARGB(255,14,136,244)
+	kvs_read
+End Sub
+
+Sub close_nothing
+	pg.Visible=False
+	cb1.ImageBitmap=Null
+	Label1.Visible=True
+	Label1.BringToFront
+	Activity.Color=Colors.ARGB(255,255,255,255)
+	cb1.ImageBitmap=LoadBitmap(File.DirAssets,"boost.png")
+	cb1.ButtonColor=Colors.ARGB(255,14,136,244)
+	kvs_read
+
+End Sub
+
+Sub t1_Tick
+	counter=counter+1
+	If counter>0 Then cc.CleanCache 
+	If counter = 2 Then 
+		t1.Enabled=False
+		counter=0
+			cb1.ImageBitmap=Null
+		cb1.ImageBitmap=LoadBitmap(File.DirAssets,"boost.png")
+		cb1.ButtonColor=Colors.ARGB(255,14,136,244)
+		Label1.TextColor=Colors.ARGB(255,14,136,244)
+		close_init
+	End If
+End Sub
+
+Sub cc_OnScanStarted
+	
+	Log("Started")
+End Sub
+
+Sub cc_onScanProgress(Current As Int , Total As Int)
+	pg.Progress=360/Total*Current
+	pg.Text=Current &" Apps scanned"
+
+End Sub
+
+Sub cc_onScanCompleted(AppsList As Object)
+	Dim totalsize As Long = 0
+	Dim pm As PackageManager
+
+	catlist.Clear
+	tmp.Clear
+	lw3.Clear
+	Try
+		Dim lu As List = AppsList
+		If lu.Size=0 Then
+			Log("nothing to show")
+			kvst.PutSimple(time,"| Last Scan: clear")
+			close_init
+			Return
+		End If
+		For n = 0 To lu.Size-1
+			Dim app() As Object = lu.Get(n)
+			If app(1) = "com.android.systemui" Then Continue 'This Pakage Have No Icon In Some Android 5
+			icon = pm.GetApplicationIcon(app(1))
+			
+			lw3.AddTwoLinesAndBitmap(app(0),NumberFormat2(app(2)/1024/1024,1,2,2,True)&"MB",icon.Bitmap)
+			lw3.AddSingleLine(catlist.Get(0)&" App(s) with, "&NumberFormat2(app(2)/1024/1024,1,2,2,True)&"MB"&" to clean")
+			lw3.SetSelection(n)
+			catlist.Add(lu.Size)	
+			totalsize = totalsize+app(2)
+			tmp.Add(app(0)&" "&NumberFormat2(app(2)/1024/1024,1,2,2,True))
+
+		Next
+		
+	Catch
+		Log(LastException.Message)
+	End Try
+	If lu.size>0 Then
+		end_scan
+	Else
+		close_init
+	End If
+End Sub
+
+Sub cc_onCleanStarted
+	Log("CleanStarted")
+End Sub
+
+Sub cc_onCleanCompleted(CacheSize As Long)
+	Log(CacheSize)
+	Activity.Color=Colors.ARGB(255,255,255,255)
+	pg.stopSpinning
+	pg.Visible=False
+	cb1.ImageBitmap=LoadBitmap(File.DirAssets,"success.png")
+	kvsmat.PutSimple(CacheSize,CacheSize)
+	mathlist.Add(CacheSize)
+	'kvst.DeleteAll
+	Dim n As Int=0
+	n=n+CacheSize
+	Log("CS n: "&n)
+	kvst.PutSimple(n,date&"|@ "&time&" App(s): "&FormatFileSize(CacheSize))
+	kvs_read
+End Sub
+
+Sub end_scan
+	Dim sum As Int=0
+	For  g=0 To  tmp.Size-1
+		sum=sum+g
+	Next
+	
+	cinfo.AddView(lw3,10dip,0dip,70%x,55%y)
+	Dim res As Int 
+	cinfo.Show("Clean?:","Clean","Cancel","",LoadBitmap(File.DirAssets,"warning_38x38.png"))
+	If cinfo.Response=DialogResponse.POSITIVE Then
+		
+			t1.Enabled=True
+		
+			pg.spin
+		Else
+			close_init
+		End If
+	Return
+End Sub
+
+Sub lv1_ItemClick (Position As Int, Value As Object)
+	If Value=Position Then 
+		inf_click
+	End If
+End Sub
+
+Sub lv1_ItemLongClick (Position As Int, Value As Object)
+	
+End Sub
+
+Sub app_list
+	applist=pak.GetInstalledPackages
+	Obj1.Target = Obj1.GetContext
+	Obj1.Target = Obj1.RunMethod("getPackageManager") ' PackageManager
+	Obj2.Target = Obj1.RunMethod2("getInstalledPackages", 0, "java.lang.int") ' List<PackageInfo>
+	size = Obj2.RunMethod("size")
+	For i = 0 To size -1
+		Obj3.Target = Obj2.RunMethod2("get", i, "java.lang.int") ' PackageInfo
+		size = Obj2.RunMethod("size")
+		Obj3.Target = Obj3.GetField("applicationInfo") ' ApplicationInfo
+		flags = Obj3.GetField("flags")
+		packName = Obj3.GetField("packageName")
+		If Bit.And(flags, 1)  = 0 Then
+			'app is not in the system image
+			args(0) = Obj3.Target
+			Types(0) = "android.content.pm.ApplicationInfo"
+			name = Obj1.RunMethod4("getApplicationLabel", args, Types)
+			icon = Obj1.RunMethod4("getApplicationIcon", args, Types)
+		End If
+	Next
+End Sub
+
+Sub pg_onClick(value As Object)
+	
+End Sub
+
+Sub FormatFileSize(Bytes As Float) As String
+   
+	Private Unit() As String = Array As String(" Byte", " KB", " MB", " GB", " TB", " PB", " EB", " ZB", " YB")
+   
+	If Bytes = 0 Then
+                    
+		Return "0 Bytes"
+    
+	Else
+       
+		Private Po, Si As Double
+		Private I As Int
+       
+		Bytes = Abs(Bytes)
+                            
+		I = Floor(Logarithm(Bytes, 1024))
+		Po = Power(1024, I)
+		Si = Bytes / Po
+       
+		Return NumberFormat(Si, 1, 2) & Unit(I)
+       
+	End If
+   
+End Sub
+
+Sub dia_onCancel()
+	Log($"onCancel()"$)
+End Sub
+Sub dia_onClick(Button As Int, index As Int)
+	'Log(Button)
+	 If Button=-1 Then 
+		'lv1.Clear
+		kvst.DeleteAll
+		'kvsmat.DeleteAll
+		mathlist.Clear
+		Activity.Invalidate
+	End If
+End Sub
+Sub dia_onDismiss()
+	Log($"onDismiss()"$)
+End Sub
+Sub dia_onItemClick(index As Int,selected As Boolean)
+	Log($"onItemClick(${index},${selected})"$)
+End Sub
+Sub dia_onKey(key As Int, keyevent As Int)
+End Sub
+
+Sub dia2_onClick(Button As Int, index As Int)
+	
+End Sub
+
+Sub dia2_onDismiss()
+	Log($"onDismiss()"$)
+End Sub
+Sub dia2_onItemClick(index As Int,selected As Boolean)
+	Log($"onItemClick(${index},${selected})"$)
+End Sub
+Sub dia2_onKey(key As Int, keyevent As Int)
+End Sub
+
+Sub dia3_onClick(Button As Int, index As Int)
+	Log($"onClick()"$)
+		
+End Sub
+
+Sub dia3_onDismiss()
+	Log($"onDismiss()"$)
+End Sub
+Sub dia3_onItemClick(index As Int,selected As Boolean)
+	Log($"onItemClick(${index},${selected})"$)
+End Sub
+Sub dia3_onKey(key As Int, keyevent As Int)
+End Sub
+
+Sub about_click
+	Dim ig As BitmapDrawable
+	ig.Initialize(LoadBitmap(File.DirAssets,"id-card.png"))
+	dia3.setTitle("About "&pak.GetApplicationLabel("com.bcleaner")&" - Version "&pak.GetVersionName("com.bcleaner")).create
+	dia3.setIcon2(ig).create
+	dia3.setMessage("Written in Basic by D.Trojan. Published by SuloMedia™").setCancelable(True).setNeutralButton("Ok").show
+End Sub
+
+Sub GetFileName(FullPath As String) As String
+	Return FullPath.SubString(FullPath.LastIndexOf("/")+1)
+End Sub
+
+Sub GetSourceDir(AppInfo As Object) As String
+	Try
+		Dim r As Reflector
+		r.Target = AppInfo
+		Return r.GetField("sourceDir")
+	Catch
+		Return ""
+	End Try
+End Sub
+
+Sub GetActivitiesInfo(package As String) As Object
+	Dim r As Reflector
+	r.Target = r.GetContext
+	r.Target = r.RunMethod("getPackageManager")
+	r.Target = r.RunMethod3("getPackageInfo", package, "java.lang.String", 0x00000001, "java.lang.int")
+	Return r.GetField("applicationInfo")
+End Sub
+
+Sub GetParentPath(Path As String) As String
+	Dim Path1 As String
+	If Path = "/" Then
+		Return "/"
+	End If
+	L = Path.LastIndexOf("/")
+	If L = Path.Length - 1 Then
+		'Strip the last slash
+		Path1 = Path.SubString2(0,L)
+	Else
+		Path1 = Path
+	End If
+	L = Path.LastIndexOf("/")
+	If L = 0 Then
+		L = 1
+	End If
+	Return Path1.SubString2(0,L)
+End Sub
+
