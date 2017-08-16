@@ -791,7 +791,7 @@ End Sub
 
 Private Sub SP_Touch(ViewTag As Object, Action As Int, X As Float, Y As Float, MotionEvent As Object) As Boolean
 	If Action = 0 Then
-		If Y < pnlDisplay.Top OR Y > pnlDisplay.Top + pnlDisplay.Height Then
+		If Y < pnlDisplay.Top Or Y > pnlDisplay.Top + pnlDisplay.Height Then
 			' Le doigt n'est pas sur le ScrollPanel -> l'événement est ignoré
 			bIgnoreEvent = True
 		Else
